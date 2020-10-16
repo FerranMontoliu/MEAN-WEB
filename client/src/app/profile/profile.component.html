@@ -1,0 +1,50 @@
+<mat-card>
+    <mat-card-content>
+        <div>
+            <form>
+                <table class="centered-elements profileinfo">
+                    <tr>
+                        <td>
+                            <p class="mat-body-strong">Name</p>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" name="name" [(ngModel)]="userDetails.name" readonly>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="mat-body-strong">Surname</p>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" name="surname" [(ngModel)]="userDetails.surname" readonly>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="mat-body-strong">Username</p>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" name="username" [(ngModel)]="userDetails.username" readonly>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="mat-body-strong">Email</p>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" name="email" [(ngModel)]="userDetails.email" readonly>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

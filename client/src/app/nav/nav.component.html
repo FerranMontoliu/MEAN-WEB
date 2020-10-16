@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1>Incidence Manager</h1>
+      <span class="menu-spacer"></span>
+      <div class="navigation-links">
+        <a mat-button [routerLink]="'/incidences'"> Incidence List </a>
+        <a mat-button [routerLink]="'/my-incidences'"> My Incidences </a>
+        <a mat-button [routerLink]="'/add-incidence'"> Add Incidence </a>
+        <a mat-button [routerLink]="'/userlist'"> User List </a>
+        <a mat-button [routerLink]="'/profile'"> Profile </a>
+        <a mat-button class="logout-btn" (click)="logout()"> Log Out </a>
+      </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container autosize>
+    <mat-sidenav #sidenav mode="side">
+      <mat-nav-list>
+        <mat-list-item>
+          <a mat-button [routerLink]="'/incidences'"> Incidence List </a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <a mat-button [routerLink]="'/my-incidences'"> My Incidences </a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <a mat-button [routerLink]="'/add-incidence'"> Add Incidence </a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <a mat-button [routerLink]="'/userlist'"> User List </a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <a mat-button [routerLink]="'/profile'"> Profile </a>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <a mat-button class="logout-btn" (click)="logout()"> Log Out </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+          <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

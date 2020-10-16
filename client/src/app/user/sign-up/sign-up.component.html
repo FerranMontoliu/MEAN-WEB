@@ -1,0 +1,92 @@
+<mat-card>
+    <mat-card-content>
+        <div>
+            <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+                <table class="centered-elements">
+                    <tr>
+                        <td>
+                            <a mat-raised-button routerLink="/signin" routerLinkActive="active">Sign In</a>
+                        </td>
+                        <td>
+                            <a mat-raised-button color="primary" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name" placeholder="Name*" required
+                                [ngClass] = "{ 'invalid-textfield': signUpForm.submitted && !name.valid }">
+                            </mat-form-field>
+                            <div *ngIf="signUpForm.submitted && !name.valid">
+                                <label class="validation-message">You must enter a name.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" #surname="ngModel" [(ngModel)]="userService.selectedUser.surname" name="surname" placeholder="Surname*" required
+                                [ngClass] = "{ 'invalid-textfield': signUpForm.submitted && !surname.valid }">
+                            </mat-form-field>
+                                <div *ngIf="signUpForm.submitted && !surname.valid">
+                                <label class="validation-message">You must enter a surname.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" #username="ngModel" [(ngModel)]="userService.selectedUser.username" name="username" placeholder="Username*" required
+                                [pattern] = "usernameRegex"
+                                [ngClass] = "{ 'invalid-textfield': signUpForm.submitted && !username.valid }">
+                            </mat-form-field>
+                            <div *ngIf="signUpForm.submitted && username.errors">
+                                <label *ngIf="username.errors.required" class="validation-message">You must enter a username.</label>
+                                <label *ngIf="username.errors.pattern" class="validation-message">Your username can't contain the character '@'.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email*" required
+                                [pattern]="emailRegex"
+                                [ngClass] = "{ 'invalid-textfield': signUpForm.submitted && !email.valid }">
+                            </mat-form-field>
+                            <div *ngIf="signUpForm.submitted && email.errors">
+                                <label *ngIf="email.errors.required" class="validation-message">You must enter an email.</label>
+                                <label *ngIf="email.errors.pattern" class="validation-message">Invalid email.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <mat-form-field appearance="outline">
+                                <input matInput type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password*" required
+                                [pattern]="passwordRegex"
+                                [ngClass] = "{ 'invalid-textfield': signUpForm.submitted && !password.valid }">
+                            </mat-form-field>
+                            <div *ngIf="signUpForm.submitted && password.errors">
+                                <label *ngIf="password.errors.required" class="validation-message">You must enter a password.</label>
+                                <label *ngIf="password.errors.pattern" class="validation-message">Invalid password.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Sign Up">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            
+            <div class="success" *ngIf="showSuccessMessage">
+                <p>User registered successfully!</p>
+            </div>
+            
+            <div class="alert" *ngIf="serverErrorMessages">
+                <p>{{serverErrorMessages}}</p>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

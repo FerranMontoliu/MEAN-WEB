@@ -1,0 +1,53 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.main-div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.alert {
+    color: red;
+}
+
+.centered-elements {
+    text-align: center;
+    table-layout: fixed;
+}
+
+.centered-card {
+    margin-left: auto;
+    margin-right: auto;
+    width: min-content;
+}
+
+.centered-elements tr td {
+    width: 50%;
+}
+
+.mat-row {
+    height: auto;
+}
+
+.mat-cell {
+    padding: 8px 8px 8px 0px;
+}
+
+.cool-table {
+    width: 100%;
+}
+
+.profileinfo {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}

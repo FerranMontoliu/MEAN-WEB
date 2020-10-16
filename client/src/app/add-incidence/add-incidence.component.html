@@ -1,0 +1,60 @@
+<mat-card class="centered-card">
+    <mat-card-content>
+        <div>
+            <form #addIncidenceForm="ngForm" (ngSubmit)="addIncidenceForm.valid && onSubmit(addIncidenceForm)">
+                <table class="centered-elements">
+                    <tr>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" #title="ngModel" [(ngModel)]="incidenceService.selectedIncidence.title" name="title" placeholder="Title*" required
+                                [ngClass] = "{ 'invalid-textfield': addIncidenceForm.submitted && !title.valid }">
+                            </mat-form-field>
+                            <div *ngIf="addIncidenceForm.submitted && !title.valid">
+                                <label class="validation-message">You must enter a title.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" #description="ngModel" [(ngModel)]="incidenceService.selectedIncidence.description" name="description" placeholder="Description"
+                                [ngClass] = "{ 'invalid-textfield': addIncidenceForm.submitted && !description.valid }">
+                            </mat-form-field>
+                            <div *ngIf="addIncidenceForm.submitted && !description.valid">
+                                <label class="validation-message">You must enter a description.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Level</mat-label>
+                                <mat-select name="level" #level="ngModel" [(ngModel)]="incidenceService.selectedIncidence.level" required>
+                                    <mat-option *ngFor="let lvl of levels" [value]="lvl">
+                                      {{ lvl }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div *ngIf="addIncidenceForm.submitted && !level.valid">
+                                <label class="validation-message">You must select a level.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Add Incidence">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            
+            <div class="success" *ngIf="showSuccessMessage">
+                <p>Incidence added successfully!</p>
+            </div>
+            
+            <div class="alert" *ngIf="serverErrorMessages">
+                <p>{{serverErrorMessages}}</p>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

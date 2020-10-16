@@ -1,0 +1,14 @@
+{
+    "development": {
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://localhost:27017/mean-web-db",
+        "JWT_SECRET": "TESTING",
+        "JWT_EXP": "20m"
+    },
+    "production": {
+        "PORT": 80,
+        "MONGODB_URI": "mongodb://mean-web.ferranmontoliu.info/mean-web-db",
+        "JWT_SECRET": "TESTING",
+        "JWT_EXP": "20m"
+    }
+}

@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-content>
+        <div>
+            <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+                <table class="centered-elements">
+                    <tr>
+                        <td>
+                            <a mat-raised-button color="primary" routerLink="/signin" routerLinkActive="active">Sign In</a>
+                        </td>
+                        <td>
+                            <a mat-raised-button routerLink="/signup" routerLinkActive="active">Sign Up</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" name="username" #username="ngModel" [(ngModel)]="model.username" placeholder="Username*" required
+                                [ngClass] = "{ 'invalid-textfield': signInForm.submitted && !username.valid }">
+                            </mat-form-field>
+                            <div *ngIf="signInForm.submitted && !username.valid">
+                                <label class="validation-message">You must enter your username.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <mat-form-field appearance="outline">
+                                <input matInput type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password*" required
+                                [ngClass] = "{ 'invalid-textfield': signInForm.submitted && !password.valid }">
+                            </mat-form-field>
+                            <div *ngIf="signInForm.submitted && !password.valid">
+                                <label class="validation-message">You must enter your password.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Sign In">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="alert" *ngIf="serverErrorMessages">
+                <p>{{serverErrorMessages}}</p>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
